@@ -2,7 +2,7 @@
 export ZSH=$HOME/.dotfiles
 
 # your project folder that we can `c [tab]` to
-export PROJECTS=~/Code
+export PROJECTS=~/Development
 
 # use .localrc for SUPER SECRET CRAP that you don't
 # want in your public, versioned repo.
@@ -38,3 +38,5 @@ do
 done
 
 unset config_files
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
