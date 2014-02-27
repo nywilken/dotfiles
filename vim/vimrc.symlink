@@ -37,4 +37,4 @@ set statusline=%n\ %F\ %m%r\%=%c-%l/%L
 set number
 :color desert
 set background=dark
-colorscheme badwolf
+colorscheme smyck
