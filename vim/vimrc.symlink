@@ -38,7 +38,6 @@ set statusline=%n\ %F\ %m%r\%=%c-%l/%L
 set number
 :color desert
 set background=dark
-colorscheme smyck
 
 autocmd vimenter * if !argc() | NERDTree | endif
 map <Bslash> :NERDTreeToggle<CR>
