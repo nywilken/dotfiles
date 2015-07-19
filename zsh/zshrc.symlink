@@ -42,4 +42,4 @@ done
 
 unset config_files
 
-PATH=$PATH:$HOME/.rvm/bin:$HOME/bin/packer-bin 
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

@@ -1,7 +1,6 @@
 syntax on
 syntax enable
 
-execute pathogen#infect()
 " Wrap gitcommit file types at the appropriate length
 filetype indent plugin on
 
@@ -38,6 +37,5 @@ set statusline=%n\ %F\ %m%r\%=%c-%l/%L
 set number
 :color desert
 set background=dark
-
 autocmd vimenter * if !argc() | NERDTree | endif
 map <Bslash> :NERDTreeToggle<CR>
