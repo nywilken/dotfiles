@@ -1,7 +1,27 @@
 syntax on
 syntax enable
+set nocompatible              " be iMproved, required
+filetype off                  " required
 
-" Wrap gitcommit file types at the appropriate length
+" set the runtime path to include Vundle and initialize
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+" alternatively, pass a path where Vundle should install plugins
+"call vundle#begin('~/some/path/here')
+
+" let Vundle manage Vundle, required
+Plugin 'gmarik/Vundle.vim'
+
+" Plugins
+Plugin 'L9'
+Plugin 'bling/vim-airline'
+Plugin 'scrooloose/nerdtree'
+Plugin 'nathanaelkane/vim-indent-guides'
+Plugin 'junegunn/seoul256.vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+
 filetype indent plugin on
 
 if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
@@ -35,7 +55,5 @@ set copyindent
 set laststatus=2
 set statusline=%n\ %F\ %m%r\%=%c-%l/%L
 set number
-:color desert
+colo seoul256
 set background=dark
-autocmd vimenter * if !argc() | NERDTree | endif
-map <Bslash> :NERDTreeToggle<CR>
