@@ -18,6 +18,8 @@ Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/seoul256.vim'
+Plugin 'gagoar/StripWhiteSpaces'
+Plugin 'kien/ctrlp.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -55,5 +57,13 @@ set copyindent
 set laststatus=2
 set statusline=%n\ %F\ %m%r\%=%c-%l/%L
 set number
+
+" indent settings
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=darkgrey
+
+" color scheme
 colo seoul256
 set background=dark
