@@ -20,4 +20,5 @@ alias grm="git status | grep deleted | awk '{\$1=\$2=\"\"; print \$0}' | \
            perl -pe 's/^[ \t]*//' | sed 's/ /\\\\ /g' | xargs git rm"
 alias glm="git pull origin master"
 alias gpm="git push origin master"
-alias gcl="git clone" 
+alias gcl="git clone"
+alias gpr="git rebase -i master"
