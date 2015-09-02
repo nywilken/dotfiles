@@ -20,6 +20,7 @@ Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/seoul256.vim'
 Plugin 'gagoar/StripWhiteSpaces'
 Plugin 'kien/ctrlp.vim'
+Plugin 'hdima/python-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
