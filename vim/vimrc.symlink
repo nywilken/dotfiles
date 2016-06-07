@@ -21,6 +21,7 @@ Plugin 'junegunn/seoul256.vim'
 Plugin 'gagoar/StripWhiteSpaces'
 Plugin 'kien/ctrlp.vim'
 Plugin 'hdima/python-syntax'
+Plugin 'geekq/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -31,33 +32,49 @@ if v:lang =~ "utf8$" || v:lang =~ "UTF-8$"
    set fileencodings=ucs-bom,utf-8,latin1
 endif
 
-"set ai			" always set autoindenting on
-"set backup		" keep a backup file
-
 set viminfo='20,\"50	" read/write a .viminfo file, don't store more
-set nocompatible	" Use Vim defaults (much better!)
 set bs=indent,eol,start		" allow backspacing over everything in insert mode
-set viminfo='20,\"50	" read/write a .viminfo file, don't store more " than 50 lines of registers
 set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
+set number " Always show line numbers
+set autoread " autoload file if changed externally
+
+set encoding=utf-8 " UTF-8 encoding always
+set ffs=unix,dos,mac " FileSytem type assume unix first
+
+" Experimental
+set lazyredraw
+set magic
+
+set smartindent
+set autoindent
+set copyindent
+
+set sts=4
+set smarttab
+set expandtab
+set tabstop=4
+set shiftwidth=4
+
+" Status, command bar settings
+set cmdheight=2 " command bar height
+set laststatus=4
+set statusline=%n\ %F\ %m%r\%=%c-%l/%L
+
+
+" Backup Settings
+set nobackup
+set nowb
+set noswapfile
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
+  set incsearch
 endif
 
-set sts=2
-set smartindent
-set tabstop=2
-set shiftwidth=2
-set expandtab
-set autoindent
-set copyindent
-set laststatus=2
-set statusline=%n\ %F\ %m%r\%=%c-%l/%L
-set number
 
 " indent settings
 let g:indent_guides_enable_on_vim_startup = 1
@@ -77,8 +94,8 @@ map <C-\> :NERDTreeToggle<CR>
 
 " NERDTress File highlighting
 function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
- exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
- exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+ exec 'autocmd FileType nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+ exec 'autocmd FileType nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
 endfunction
 
 call NERDTreeHighlightFile('jade', 'green', 'none', 'green', '#151515')
