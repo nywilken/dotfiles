@@ -17,7 +17,7 @@ typeset -U config_files
 config_files=($ZSH/**/*.zsh)
 
 # set VI binding
-set -o vi 
+set -o vi
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}
@@ -42,5 +42,3 @@ do
 done
 
 unset config_files
-
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
