@@ -1,5 +1,5 @@
-set-option -g status-utf8 on
-set-option -g default-shell /usr/bin/zsh 
+#set-option -g status-utf8 on
+set-option -g default-shell /usr/bin/zsh
 
 # use vi mode
 setw -g mode-keys vi
@@ -52,10 +52,10 @@ bind BSpace previous-window
 bind-key T swap-window -t 0
 
 # Enable mouse pointer actions
-set -g mode-mouse on
-set -g mouse-resize-pane on
-set -g mouse-select-pane on
-set -g mouse-select-window on
+#set -g mode-mouse on
+#set -g mouse-resize-pane on
+#set -g mouse-select-pane on
+#set -g mouse-select-window on
 
 # colors
 set -g default-terminal "screen-256color"
@@ -106,3 +106,17 @@ bind - \
 
 # Add rainbarf panel
 set -g status-right '#(rainbarf --rgb)'
+# Keys to toggle monitoring activity in a window, and synchronize-panes
+bind m set monitor-activity
+bind y set synchronize-panes\; display 'synchronize-panes #{?synchronize-panes,on,off}'
+#
+# # Keys to hide and show a window name from the status line
+bind '-' set window-status-format '#I'\; set window-status-current-format '#I'
+bind '+' set window-status-format '#I:#W#F'\; set window-status-current-format '#I:#W#F'
+
+new -d -s0 -ndefault 'exec vim'
+set -t0:0 monitor-activity on
+set  -t0:0 aggressive-resize on
+splitw -h 'exec mutt'
+splitw -v
+selectp -t 0
