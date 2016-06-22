@@ -14,7 +14,6 @@ Plugin 'gmarik/Vundle.vim'
 
 " Plugins
 Plugin 'L9'
-Plugin 'bling/vim-airline'
 Plugin 'scrooloose/nerdtree'
 Plugin 'nathanaelkane/vim-indent-guides'
 Plugin 'junegunn/seoul256.vim'
@@ -38,6 +37,7 @@ set history=50		" keep 50 lines of command line history
 set ruler		" show the cursor position all the time
 set number " Always show line numbers
 set autoread " autoload file if changed externally
+set showtabline=2 " Show tab numbers
 
 set encoding=utf-8 " UTF-8 encoding always
 set ffs=unix,dos,mac " FileSytem type assume unix first
