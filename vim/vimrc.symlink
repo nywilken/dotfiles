@@ -21,6 +21,8 @@ Plugin 'gagoar/StripWhiteSpaces'
 Plugin 'kien/ctrlp.vim'
 Plugin 'hdima/python-syntax'
 Plugin 'geekq/vim-go'
+Plugin 'elzr/vim-json'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -50,11 +52,11 @@ set smartindent
 set autoindent
 set copyindent
 
-set sts=4
+set sts=2
 set smarttab
 set expandtab
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 " Status, command bar settings
 set cmdheight=2 " command bar height
@@ -81,6 +83,10 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
+
+" fold settings
+set foldmethod=indent
+set foldlevel=2
 
 " color scheme
 colo seoul256

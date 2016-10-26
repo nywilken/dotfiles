@@ -22,3 +22,5 @@ alias glm="git pull origin master"
 alias gpm="git push origin master"
 alias gcl="git clone"
 alias gpr="git rebase -i master"
+# Delete all merged branches
+alias gbdall='git branch --merged | grep -v "\*" | xargs -n 1 git branch -d'
