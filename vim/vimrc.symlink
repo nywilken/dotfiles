@@ -20,9 +20,9 @@ Plugin 'junegunn/seoul256.vim'
 Plugin 'gagoar/StripWhiteSpaces'
 Plugin 'kien/ctrlp.vim'
 Plugin 'hdima/python-syntax'
-Plugin 'geekq/vim-go'
 Plugin 'elzr/vim-json'
-
+Plugin 'fatih/vim-go'
+Plugin 'ngmy/vim-rubocop'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -40,6 +40,7 @@ set ruler		" show the cursor position all the time
 set number " Always show line numbers
 set autoread " autoload file if changed externally
 set showtabline=2 " Show tab numbers
+set spell " spell checking on
 
 set encoding=utf-8 " UTF-8 encoding always
 set ffs=unix,dos,mac " FileSytem type assume unix first
@@ -85,12 +86,16 @@ hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
 " fold settings
-set foldmethod=indent
+set foldenable
+set foldmethod=marker
 set foldlevel=2
 
 " color scheme
 colo seoul256
 set background=dark
+
+" Ruby settings
+autocmd FileType ruby autocmd BufWrite <buffer> RuboCop -a
 
 " key bindings
 " NERDTree
