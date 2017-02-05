@@ -94,9 +94,6 @@ set foldlevel=2
 colo seoul256
 set background=dark
 
-" Ruby settings
-autocmd FileType ruby autocmd BufWrite <buffer> RuboCop -a
-
 " key bindings
 " NERDTree
 " Open NERDTree automatically on startup
