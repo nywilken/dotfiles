@@ -23,6 +23,8 @@ Plugin 'hdima/python-syntax'
 Plugin 'elzr/vim-json'
 Plugin 'fatih/vim-go'
 Plugin 'ngmy/vim-rubocop'
+Plugin 'vim-airline/vim-airline'
+Plugin 'jens-na/vim-tasktimer'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -61,7 +63,7 @@ set shiftwidth=2
 
 " Status, command bar settings
 set cmdheight=2 " command bar height
-set laststatus=4
+set laststatus=2
 set statusline=%n\ %F\ %m%r\%=%c-%l/%L
 
 
@@ -93,6 +95,10 @@ set foldlevel=2
 " color scheme
 colo seoul256
 set background=dark
+
+" plugin configuration
+let g:airline#extensions#tabline#enabled = 1
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " key bindings
 " NERDTree
