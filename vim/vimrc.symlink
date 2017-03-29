@@ -25,6 +25,7 @@ Plugin 'fatih/vim-go'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'vim-airline/vim-airline'
 Plugin 'jens-na/vim-tasktimer'
+Plugin 'majutsushi/tagbar'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required

@@ -19,12 +19,12 @@ bind k select-pane -U
 bind l select-pane -R
 bind h select-pane -L
 
-# v - vertical pane split
-# h - horizontal pane split
+# pipe - vertical pane split
+# underscore - horizontal pane split
 unbind %
-bind H split-window -v
+bind _ split-window -v
 unbind '"'
-bind V split-window -h
+bind | split-window -h
 
 # Resize panes
 bind-key C-h    resize-pane -L 5
@@ -113,10 +113,3 @@ bind y set synchronize-panes\; display 'synchronize-panes #{?synchronize-panes,o
 # # Keys to hide and show a window name from the status line
 bind '-' set window-status-format '#I'\; set window-status-current-format '#I'
 bind '+' set window-status-format '#I:#W#F'\; set window-status-current-format '#I:#W#F'
-
-new -d -s0 -ndefault 'exec vim'
-set -t0:0 monitor-activity on
-set  -t0:0 aggressive-resize on
-splitw -h 'exec mutt'
-splitw -v
-selectp -t 0
