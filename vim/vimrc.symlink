@@ -85,6 +85,7 @@ endif
 " indent settings
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_auto_colors = 0
+
 hi IndentGuidesOdd  ctermbg=black
 hi IndentGuidesEven ctermbg=darkgrey
 
@@ -98,7 +99,11 @@ colo seoul256
 set background=dark
 
 " plugin configuration
+let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_splits = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " splits and tab number
+let g:airline#extensions#tmuxline#enabled = 1
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " key bindings
