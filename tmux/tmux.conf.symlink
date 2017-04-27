@@ -22,9 +22,9 @@ bind h select-pane -L
 # pipe - vertical pane split
 # underscore - horizontal pane split
 unbind %
-bind _ split-window -v
+bind _ split-window -v -c "#{pane_curretn_path}"
 unbind '"'
-bind | split-window -h
+bind | split-window -h -c "#{pane_curretn_path}"
 
 # Resize panes
 bind-key C-h    resize-pane -L 5
@@ -114,8 +114,6 @@ bind y set synchronize-panes\; display 'synchronize-panes #{?synchronize-panes,o
 bind '-' set window-status-format '#I'\; set window-status-current-format '#I'
 bind '+' set window-status-format '#I:#W#F'\; set window-status-current-format '#I:#W#F'
 
-# set up layouts
-set main-pane-width 130
 #
 # scrollback buffer size increase
 set -g history-limit 500000

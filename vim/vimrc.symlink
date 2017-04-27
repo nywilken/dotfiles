@@ -26,6 +26,8 @@ Plugin 'ngmy/vim-rubocop'
 Plugin 'vim-airline/vim-airline'
 Plugin 'jens-na/vim-tasktimer'
 Plugin 'majutsushi/tagbar'
+Plugin 'benmills/vimux'
+Plugin 'skalnik/vim-vroom'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -98,7 +100,37 @@ set foldlevel=2
 colo seoul256
 set background=dark
 
+" custom maps
+" vv to generate new vertical split
+noremap <silent> vv <C-w>v
+noremap <silent> <C-j> <C-w>h
+noremap <silent> <C-k> <C-w>l
+
 " plugin configuration
+
+" Run the current file with rspec
+map <Leader>rb :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+
+" Prompt for a command to run
+map <Leader>vp :VimuxPromptCommand<CR>
+
+" Run last command executed by VimuxRunCommand
+map <Leader>vl :VimuxRunLastCommand<CR>
+
+" Inspect runner pane
+map <Leader>vi :VimuxInspectRunner<CR>
+
+" Close vim tmux runner opened by VimuxRunCommand
+map <Leader>vq :VimuxCloseRunner<CR>
+
+" Interrupt any command running in the runner pane
+map <Leader>vx :VimuxInterruptRunner<CR>
+
+" Zoom the runner pane (use <bind-key> z to restore runner pane)
+map <Leader>vz :call VimuxZoomRunner()<CR>
+
+
+" Airline configuration
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_splits = 1
