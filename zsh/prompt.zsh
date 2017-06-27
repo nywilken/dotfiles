@@ -34,41 +34,13 @@ git_prompt_info () {
  echo "${ref#refs/heads/}"
 }
 
-unpushed () {
-  $git cherry -v @{upstream} 2>/dev/null | wc -l
-}
-
-commits_behind() {
-  $git rev-list ...@ >/dev/null 2>&1 | wc -l
-}
-
-need_push () {
-  local commits=$(unpushed)
-  if [[ $commits == 0 ]]
-  then
-   echo "0"
-  else
-    echo "%{$fg_bold[magenta]%}+%{$reset_color%}$commits"
-  fi
-}
-
-needs_sync () {
-  local commits=$(commits_behind)
-  if [[ $commits == 0 ]]
-  then
-   echo "0"
-  else
-    echo "%{$fg_bold[magenta]%}-%{$reset_color%}$commits"
-  fi
-}
-
 commit_status() {
-  local status_line="($(needs_sync)/$(need_push))"
-  if [[ $status_line == "(0/0)" ]]
+  status_line=$(git status -sb --porcelain 2>/dev/null | cut -d' ' -f3,4,5,6 | grep '\[' | sed 's/[^a-z 0-9,]*//g')
+  if ! [[ -z "$status_line" ]]
   then
-    echo ""
+    echo " ($status_line)"
   else
-    echo " $status_line"
+    echo ""
   fi
 }
 
@@ -99,29 +71,39 @@ directory_name() {
 }
 
 running_jobs() {
-  local job_count=$(jobs | grep '^\[' | wc -l)
+  job_count=$(jobs | grep '^\[' | wc -l | awk '{print $1}')
   echo "%{$fg_bold[magenta]%}[$job_count]%{$reset_color%}"
 }
 
 cpu_util() {
-  local utilization=$(iostat -c | grep -v '^[a-zA-Z]' | grep '[0-9]' | awk '{print int($1+0.5)}')
-  local color=blue
-
-  if [ $utilization -gt 60 ]
+  if [[ "$(uname -a | awk '{print $1}')" =~ ^Darwin ]]
   then
-    color=red
+    echo ""
+  else
+    utilization=$(iostat -c | grep -v '^[a-zA-Z]' | grep '[0-9]' | awk '{print int($1+0.5)}')
+    color=blue
+
+    if [ $utilization -gt 60 ]
+    then
+      color=red
+    fi
+    echo "%{$fg_bold[$color]%}[$utilization]%{$reset_color%}"
   fi
-  echo "%{$fg_bold[$color]%}[$utilization]%{$reset_color%}"
 }
 
 prompt_status_bar(){
-  local timestamp=$(date +'%r')
+  timestamp=$(date +'%r')
   echo "%{$fg_bold[grey]%}$timestamp $(running_jobs)$(cpu_util)%{$reset_color%}"
+}
+
+TRAPALRM() {
+      zle reset-prompt
 }
 
 export PROMPT=$'\n$(prompt_status_bar) $(rb_prompt) in $(directory_name) $(git_dirty)$(commit_status)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
+  TMOUT=1
 }
 
 precmd() {
