@@ -35,10 +35,10 @@ git_prompt_info () {
 }
 
 commit_status() {
-  status_line=$(git status -sb --porcelain 2>/dev/null | cut -d' ' -f3,4,5,6 | grep '\[' | sed 's/[^a-z 0-9,]*//g')
-  if ! [[ -z "$status_line" ]]
+  st=$(git status -sb --porcelain 2>/dev/null | cut -d' ' -f3,4,5,6 | grep '\[' | sed 's/[^a-z 0-9,]*//g')
+  if ! [[ -z "$st" ]]
   then
-    echo " ($status_line)"
+    echo " ($st)"
   else
     echo ""
   fi
@@ -65,14 +65,13 @@ rb_prompt() {
   fi
 }
 
-
 directory_name() {
   echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
 }
 
 running_jobs() {
-  job_count=$(jobs | grep '^\[' | wc -l | awk '{print $1}')
-  echo "%{$fg_bold[magenta]%}[$job_count]%{$reset_color%}"
+  jc=$(jobs | grep '^\[' | wc -l | awk '{print $1}')
+  echo "%{$fg_bold[magenta]%}[$jc]%{$reset_color%}"
 }
 
 cpu_util() {
@@ -80,14 +79,14 @@ cpu_util() {
   then
     echo ""
   else
-    utilization=$(iostat -c | grep -v '^[a-zA-Z]' | grep '[0-9]' | awk '{print int($1+0.5)}')
-    color=blue
+    ut=$(iostat -c | grep -v '^[a-zA-Z]' | grep '[0-9]' | awk '{print int($1+0.5)}')
+    c=blue
 
-    if [ $utilization -gt 60 ]
+    if [ $ut -gt 60 ]
     then
-      color=red
+      c=red
     fi
-    echo "%{$fg_bold[$color]%}[$utilization]%{$reset_color%}"
+    echo "%{$fg_bold[$c]%}[$ut]%{$reset_color%}"
   fi
 }
 
