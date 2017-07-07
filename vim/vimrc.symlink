@@ -187,6 +187,8 @@ let g:airline#extensions#tmuxline#enabled = 1
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
 " key bindings
+map <C-?> :TagbarToggle<CR>
+
 " NERDTree
 " Open NERDTree automatically on startup
 " autocmd vimenter * NERDTree

@@ -91,18 +91,12 @@ cpu_util() {
 }
 
 prompt_status_bar(){
-  timestamp=$(date +'%r')
-  echo "%{$fg_bold[grey]%}$timestamp $(running_jobs)$(cpu_util)%{$reset_color%}"
-}
-
-TRAPALRM() {
-      zle reset-prompt
+  echo "%{$fg_bold[grey]%}$(hostname) $(running_jobs)$(cpu_util)%{$reset_color%}"
 }
 
 export PROMPT=$'\n$(prompt_status_bar) $(rb_prompt) in $(directory_name) $(git_dirty)$(commit_status)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
-  TMOUT=1
 }
 
 precmd() {

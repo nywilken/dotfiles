@@ -124,5 +124,13 @@ set -g base-index 1
 # Allows for faster key repetition
 set -s escape-time 0
 #
+
 # Highlight active window
-set-window-option -g window-status-current-bg red
+set-window-option -g window-status-current-bg blue
+
+set -g status-right '#[fg=green]|#[fg=white]%d/%m %H:%M:%S'
+
+# Default session
+new -s term
+splitw -h -p 50 -t 0
+splitw -v -p 50
