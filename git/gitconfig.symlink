@@ -37,3 +37,5 @@
         followTags = true
 [rerere]
 	enabled = 1
+[http]
+	cookiefile = /home/wilken/.gitcookies

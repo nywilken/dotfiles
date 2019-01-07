@@ -1,0 +1,2 @@
+#compdef z
+_files -W $PROJECTS/golang/src/ -/

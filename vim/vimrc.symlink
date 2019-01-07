@@ -1,7 +1,7 @@
 syntax on
 syntax enable
 set nocompatible              " be iMproved, required
-filetype off                  " required
+"filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -25,9 +25,10 @@ Plugin 'fatih/vim-go'
 Plugin 'ngmy/vim-rubocop'
 Plugin 'vim-airline/vim-airline'
 Plugin 'jens-na/vim-tasktimer'
-Plugin 'majutsushi/tagbar'
 Plugin 'benmills/vimux'
 Plugin 'skalnik/vim-vroom'
+Plugin 'stamblerre/gocode', {'rtp': 'vim/'}
+Plugin 'w0rp/ale'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -49,6 +50,9 @@ set spell " spell checking on
 
 set encoding=utf-8 " UTF-8 encoding always
 set ffs=unix,dos,mac " FileSytem type assume unix first
+
+" Leader key configuration
+let mapleader = ","
 
 " Experimental
 set lazyredraw
@@ -105,6 +109,14 @@ set background=dark
 noremap <silent> vv <C-w>v
 noremap <silent> <C-j> <C-w>h
 noremap <silent> <C-k> <C-w>l
+
+" Buffer
+map gn :bn<cr>
+map gp :bp<cr>
+map gd :bd<cr>
+
+" Buffers
+set hidden
 
 " plugin configuration
 
@@ -178,6 +190,20 @@ let g:ale_linters = {
   \ 'go': ['gopls'],
   \}
 
+" Vim-Go configuration
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_types = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_fmt_command = "goimports"
+
+" let g:go_auto_sameids = 1
+
+" Run Go Test
+map <Leader>t :GoTest<CR>
+
+
+
 " Airline configuration
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
@@ -186,8 +212,8 @@ let g:airline#extensions#tabline#tab_nr_type = 1 " splits and tab number
 let g:airline#extensions#tmuxline#enabled = 1
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" key bindings
-map <C-?> :TagbarToggle<CR>
+" Omnifunc
+autocmd FileType go setlocal omnifunc=go#complete#Complete
 
 " NERDTree
 " Open NERDTree automatically on startup

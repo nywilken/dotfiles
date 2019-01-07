@@ -65,8 +65,22 @@ rb_prompt() {
   fi
 }
 
+go_version() {
+  echo "$(go version | awk '{print $3}')" | sed 's/^go/go-/g'
+}
+
+
+go_prompt() {
+  if ! [[ -z "$(go_version)" ]]
+  then
+    echo "%{$fg_bold[yellow]%}[$(go_version)]%{$reset_color%}"
+  else
+    echo ""
+  fi
+}
+
 directory_name() {
-  echo "%{$fg_bold[cyan]%}%1/%\/%{$reset_color%}"
+  echo "%{$fg_bold[cyan]%}%0~%\/%{$reset_color%}"
 }
 
 running_jobs() {
@@ -91,12 +105,13 @@ cpu_util() {
 }
 
 prompt_status_bar(){
-  echo "%{$fg_bold[grey]%}$(hostname) $(running_jobs)$(cpu_util)%{$reset_color%}"
+  echo "$(go_prompt) $(running_jobs) $(whoami)%{$reset_color%}"
 }
 
-export PROMPT=$'\n$(prompt_status_bar) $(rb_prompt) in $(directory_name) $(git_dirty)$(commit_status)\n› '
+export PROMPT=$'\n$(prompt_status_bar) in $(directory_name) $(git_dirty)$(commit_status)
+> '
 set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
+  export RPROMPT="%{$fg_bold[cyan]%}[%h] %{$reset_color%}"
 }
 
 precmd() {
