@@ -105,7 +105,7 @@ cpu_util() {
 }
 
 prompt_status_bar(){
-  echo "$(go_prompt) $(running_jobs) $(whoami)%{$reset_color%}"
+  echo "$(go_prompt) $(running_jobs) $(whoami)@$(hostname -s)%{$reset_color%}"
 }
 
 export PROMPT=$'\n$(prompt_status_bar) in $(directory_name) $(git_dirty)$(commit_status)
