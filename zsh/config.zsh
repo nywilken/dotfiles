@@ -37,6 +37,9 @@ setopt HIST_REDUCE_BLANKS
 #   like: git comm-[tab]
 setopt complete_aliases
 
+# autocd into direcotries
+setopt  autocd autopushd
+
 zle -N newtab
 
 bindkey '^[^[[D' backward-word

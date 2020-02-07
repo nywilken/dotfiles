@@ -109,9 +109,9 @@ prompt_status_bar(){
 }
 
 export PROMPT=$'\n$(prompt_status_bar) in $(directory_name) $(git_dirty)$(commit_status)
-> '
+\u21f6  '
 set_prompt () {
-  export RPROMPT="%{$fg_bold[cyan]%}[%h] %{$reset_color%}"
+  export RPROMPT=""
 }
 
 precmd() {

@@ -1,8 +1,9 @@
 [hub]
         protocol = https
 [user]
-        name = nywilken
+	name = Wilken Rivera
         useConfigOnly = true
+	email = dev@wilkenrivera.com
 [credential]
         helper = cache
 [alias]
