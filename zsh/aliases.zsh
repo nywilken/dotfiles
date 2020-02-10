@@ -10,4 +10,5 @@ alias reload!='. ~/.zshrc'
 alias ls='ls --color=tty'
 alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ack='ack  --ignore-dir={.git,vendor,.vagrant}'
+alias tmux='tmux -2'
 

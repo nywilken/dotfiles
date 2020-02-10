@@ -67,6 +67,7 @@ set smarttab
 set expandtab
 set tabstop=2
 set shiftwidth=2
+set tw=0
 
 " Status, command bar settings
 set cmdheight=2 " command bar height
