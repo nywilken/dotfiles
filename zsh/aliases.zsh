@@ -12,6 +12,10 @@ alias grep='grep  --color=auto --exclude-dir={.bzr,CVS,.git,.hg,.svn}'
 alias ack='ack  --ignore-dir={.git,vendor,.vagrant}'
 alias tmux='tmux -2'
 
+alias vim="nvim"
+alias vi="nvim"
+alias oldvim="vim"
+
 new-thing() {
   pushd ~/Documents/gsd
   hub issue create -m $1 -l $2
